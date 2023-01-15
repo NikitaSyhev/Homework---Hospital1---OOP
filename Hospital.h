@@ -1,18 +1,30 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <map> //контейнер map
+#include <map> 
+#include <vector>
+#include"Patient.h"
+class Patient;
+
+
+
 class Hospital
 {
 public:
 	Hospital();
+	Hospital(const std::vector<std::string>& deseases);
 	
-	void patientRegister(int num, const std::string& name);
-	void patientDischarge(int num);
-	void patientProcedures(int num);
+	void patientRegister(Patient& patient);
+	void patientDischarge(int key);
+	void patientProcedures(int key);
+	void showPatients();
+
 
 private:
-	std::map<int, std::string> _patients;
+	std::map<int, class Patient> _patients;
 	int _proceduresCounter;
+	int _idCounter;
+	std::vector<std::string> _deseases;
 };
+
 
